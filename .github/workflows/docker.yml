@@ -26,6 +26,10 @@ jobs:
           - image: "openjdk:21-jdk-bullseye"
             tag: jdk-21
           - image: "azul/zulu-openjdk-debian:17-latest"
+            tag: zulu-11
+          - image: "azul/zulu-openjdk-debian:17-latest"
+            tag: zulu-16
+          - image: "azul/zulu-openjdk-debian:17-latest"
             tag: zulu-17
           - image: "azul/zulu-openjdk-debian:21-latest"
             tag: zulu-21
