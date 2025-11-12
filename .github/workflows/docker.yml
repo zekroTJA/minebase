@@ -15,16 +15,22 @@ jobs:
     strategy:
       matrix:
         jdk:
-          - image: "openjdk:8-jdk-bullseye"
-            tag: jdk-8
-          - image: "openjdk:11-jdk-bullseye"
-            tag: jdk-11
-          - image: "openjdk:16-jdk-bullseye"
-            tag: jdk-16
-          - image: "openjdk:17-jdk-bullseye"
-            tag: jdk-17
-          - image: "openjdk:22-jdk-bullseye"
-            tag: jdk-22
+          - image: "eclipse-temurin:8"
+            tag: temurin-8
+          - image: "eclipse-temurin:11"
+            tag: temurin-11
+          - image: "eclipse-temurin:16"
+            tag: temurin-16
+          - image: "eclipse-temurin:17"
+            tag: temurin-17
+          - image: "eclipse-temurin:22"
+            tag: temurin-22
+          - image: "eclipse-temurin:23"
+            tag: temurin-23
+          - image: "eclipse-temurin:24"
+            tag: temurin-24
+          - image: "eclipse-temurin:25"
+            tag: temurin-25
           - image: "azul/zulu-openjdk-debian:17-latest"
             tag: zulu-17
           - image: "azul/zulu-openjdk-debian:21-latest"
