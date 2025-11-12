@@ -23,14 +23,20 @@ jobs:
             tag: jdk-16
           - image: "openjdk:17-jdk-bullseye"
             tag: jdk-17
-          - image: "openjdk:21-jdk-bullseye"
-            tag: jdk-21
+          - image: "openjdk:22-jdk-bullseye"
+            tag: jdk-22
           - image: "azul/zulu-openjdk-debian:17-latest"
             tag: zulu-17
           - image: "azul/zulu-openjdk-debian:21-latest"
             tag: zulu-21
           - image: "azul/zulu-openjdk-debian:22-latest"
             tag: zulu-22
+          - image: "azul/zulu-openjdk-debian:23-latest"
+            tag: zulu-23
+          - image: "azul/zulu-openjdk-debian:24-latest"
+            tag: zulu-24
+          - image: "azul/zulu-openjdk-debian:25-latest"
+            tag: zulu-25
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
