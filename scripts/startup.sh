@@ -27,8 +27,8 @@ else
   echo -e "${PURPLE}ATTENTION: No build script at $BUILD_SCRIPT existent!${RESET}"
 fi
 
-if [[ -f secrets.env ]]; then
-  export $(grep -v '^#' secrets.env | xargs -d '\n')
+if [[ -f /run/secrets/secrets.env ]]; then
+  export $(grep -v '^#' /run/secrets/secrets.env | xargs -d '\n')
 fi
 
 if [ -f "$RUN_SCRIPT" ]; then
