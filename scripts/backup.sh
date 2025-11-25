@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 WDIR=/tmp/backup
 
@@ -12,9 +12,9 @@ fi
 
 backup_location="${BACKUP_LOCATION:-/var/mcserver/}"
 
-if [ -f /run/secrets/rcloneconfig ]; then
-    if [ -d "$backup_location" ]; then
-        echo -e "\n[${CYAN} INFO ${RESET}] Starting backup"
+if [[ -f /run/secrets/rcloneconfig ]]; then
+    if [[ -d $backup_location ]]; then
+        info "Starting backup"
         mkdir -p "$WDIR"
 
         FILENAME="$1-$(date +"$(eval echo "${BACKUP_FILE_FORMAT}")").zip"
@@ -23,21 +23,21 @@ if [ -f /run/secrets/rcloneconfig ]; then
         zip -9rq "${WDIR}/$FILENAME" "$backup_location"
 
         # Rclone move
-        echo -e "\n[${CYAN} INFO ${RESET}] Start uploading of backup $FILENAME"
-        rclone --config /run/secrets/rcloneconfig move "${WDIR}/$FILENAME" "$BACKUP_TARGET" -v
+        info "Start uploading of backup ${FILENAME}"
+        rclone --config /run/secrets/rcloneconfig move "${WDIR}/${FILENAME}" "${BACKUP_TARGET}" -v
 
-        echo -e "\n[${CYAN} INFO ${RESET}] Cleaning up old backups"
-        rclone --config /run/secrets/rcloneconfig --min-age "$MAX_AGE_BACKUP_FILES" delete "$BACKUP_TARGET" -v
+        info "Cleaning up old backups"
+        rclone --config /run/secrets/rcloneconfig --min-age "${MAX_AGE_BACKUP_FILES}" delete "${BACKUP_TARGET}" -v
 
         # Delete WDIR
         rm -rf "$WDIR"
-        echo -e "\n[${CYAN} INFO ${RESET}] Finished backup"
+        info "Finished backup"
     else
-        echo -e "\n[${CYAN} INFO ${RESET}] Minecraft server is not initialized"
+        info "Minecraft server is not initialized"
     fi
 
 else
-    echo -e "\n[${CYAN} INFO ${RESET}] Backup is disabled"
+    info "Backup is disabled"
 fi
 
 exit 0

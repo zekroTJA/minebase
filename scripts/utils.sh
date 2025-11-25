@@ -1,6 +1,8 @@
 
 CYAN="\033[0;36m"
 PURPLE="\033[0;35m"
+ORANGE="\033[38;5;214m"
+HOTPINK="\033[38;5;205m"
 RESET="\033[0m"
 
 is_true() {
@@ -20,8 +22,16 @@ notify() {
   fi
 }
 
+debug() {
+    printf "[ ${HOTPINK}DEBUG${RESET} ] %s\n" "$@"
+}
+
 info() {
     printf "[ ${CYAN}INFO${RESET} ] %s\n" "$@"
+}
+
+warn() {
+    printf "[ ${ORANGE}WARN${RESET} ] %s\n" "$@"
 }
 
 error() {

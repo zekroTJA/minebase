@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 source ./scripts/utils.sh
@@ -21,13 +21,13 @@ RUN_SCRIPT=$(realpath ./scripts/run.sh)
 ./scripts/information.sh
 is_true "$PRE_START_BACKUP" && backup "pre" &
 
-if [ -f "$BUILD_SCRIPT" ]; then 
+if [ -f "$BUILD_SCRIPT" ]; then
   "$BUILD_SCRIPT"
 else
   echo -e "${PURPLE}ATTENTION: No build script at $BUILD_SCRIPT existent!${RESET}"
 fi
 
-if [ -f "$RUN_SCRIPT" ]; then 
+if [ -f "$RUN_SCRIPT" ]; then
   "$RUN_SCRIPT"
 else
   echo -e "${PURPLE}No run script at $RUN_SCRIPT existent!${RESET}"
