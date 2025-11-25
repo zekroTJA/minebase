@@ -18,6 +18,10 @@ backup() {
 BUILD_SCRIPT=$(realpath ./scripts/build.sh)
 RUN_SCRIPT=$(realpath ./scripts/run.sh)
 
+if [[ -f /run/secrets/secrets.env ]]; then
+  export $(grep -v '^#' /run/secrets/secrets.env | xargs -d '\n')
+fi
+
 ./scripts/information.sh
 is_true "$PRE_START_BACKUP" && backup "pre" &
 
@@ -25,10 +29,6 @@ if [ -f "$BUILD_SCRIPT" ]; then
   "$BUILD_SCRIPT"
 else
   echo -e "${PURPLE}ATTENTION: No build script at $BUILD_SCRIPT existent!${RESET}"
-fi
-
-if [[ -f /run/secrets/secrets.env ]]; then
-  export $(grep -v '^#' /run/secrets/secrets.env | xargs -d '\n')
 fi
 
 if [ -f "$RUN_SCRIPT" ]; then
