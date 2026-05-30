@@ -31,6 +31,8 @@ jobs:
             tag: temurin-24
           - image: "eclipse-temurin:25"
             tag: temurin-25
+          - image: "eclipse-temurin:26"
+            tag: temurin-26
           - image: "azul/zulu-openjdk-debian:17-latest"
             tag: zulu-17
           - image: "azul/zulu-openjdk-debian:21-latest"
@@ -43,6 +45,8 @@ jobs:
             tag: zulu-24
           - image: "azul/zulu-openjdk-debian:25-latest"
             tag: zulu-25
+          - image: "azul/zulu-openjdk-debian:26-latest"
+            tag: zulu-26
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
